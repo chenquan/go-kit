@@ -27,9 +27,10 @@ import (
 
 const waitTime = 5500 * time.Millisecond
 
+var signals = make(chan os.Signal, 1)
+
 func init() {
 	go func() {
-		signals := make(chan os.Signal, 1)
 		signal.Notify(signals, syscall.SIGTERM)
 
 		for {
