@@ -29,7 +29,6 @@ func TestShutdown(t *testing.T) {
 	called := AddShutdownListener(func() {
 		val += 2
 	})
-	_ = syscall.Kill(syscall.Getpid(), syscall.SIGTERM)
 	signals <- syscall.SIGTERM
 	called()
 	assert.Equal(t, 3, val)
