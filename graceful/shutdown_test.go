@@ -25,9 +25,9 @@ import (
 
 func TestShutdown(t *testing.T) {
 	val := 1
-
 	called := AddShutdownListener(func() {
 		val += 2
+		panic("any")
 	})
 	signals <- syscall.SIGTERM
 	called()
